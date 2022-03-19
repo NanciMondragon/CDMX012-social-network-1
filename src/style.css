@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Comfortaa:wght@700&display=swap');
+*{
+    margin: 0;
+    padding:0;
+}
+
+h1{
+   color:#544E3F;
+   font-family: Comfortaa;
+   font-weight: bold;
+   font-size: 70px;
+}
+h2{
+    
+    color:#544E3F;
+    font-family: Montserrat;
+ }
+.HomeDiv{
+    display: flex;
+    flex-direction: column;
+    background-color: #E2B73E;
+    align-items: center;
+    gap:20px;
+    padding: 50px;
+}
+.buttonHome{
+    width: 20%;
+    border-radius: 15px;
+    background-color: #AF6F7F;
+    font-family: Montserrat;
+    font-weight: bolder;
+    color:#F7F6F4;
+    padding: 6px;
+}
