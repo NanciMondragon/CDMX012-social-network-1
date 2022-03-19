@@ -1,5 +1,5 @@
 //eslint-disable-next-line import/no-cycle
-//SPA Crear cuenta
+//SPA Crear cuenta h
 import { onNavigate } from "../main.js";
 
 export const Register = () => {
