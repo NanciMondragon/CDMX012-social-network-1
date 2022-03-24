@@ -1,3 +1,5 @@
+//Sincronizando firebase con usuarios creados y cuentas de google 
+
 import {
   getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider,
 } from './firebase.js';
