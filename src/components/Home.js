@@ -4,6 +4,7 @@ import { onNavigate } from '../main.js';
 import { provider } from '../lib/LoginFirebase.js';
 import { loginGoogle } from '../lib/LoginFirebase.js';
 
+
 export const Home = () => {
   const homeDiv = document.createElement('div');
   // Para darle una clase al div
