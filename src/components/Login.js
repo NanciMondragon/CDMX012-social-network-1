@@ -14,31 +14,74 @@ export const Login = () => {
   inputMail.className = 'inputName';
   inputMail.setAttribute('id', 'idMailLogin');
   inputMail.placeholder = 'Ingresa tu Email';
+  inputMail.setAttribute('type', 'email');
 
   const inputPassword = document.createElement('input');
   inputPassword.className = 'inputName';
   inputPassword.setAttribute('id', 'idPasswordLogin');
   inputPassword.placeholder = 'Ingresa tu Contraseña';
+  inputPassword.setAttribute('type', 'password');
 
-  const nodoH6 = document.createElement('h6');
+  // const nodoH6 = document.createElement('h6');
   const buttonSesion = document.createElement('button');
   buttonSesion.className = 'buttonHome';
   buttonSesion.setAttribute('id', 'buttonSesion');
 
   buttonSesion.addEventListener('click', (e) => {
     const idMailLogin = document.getElementById('idMailLogin').value;
-    console.log(idMailLogin);
     const idPasswordLogin = document.getElementById('idPasswordLogin').value;
-    console.log(idPasswordLogin);
     loginUser(idMailLogin, idPasswordLogin)
       .then((userCredential) => {
         const user = userCredential;
-        console.log(userCredential); 
-        //aqui va el onNavigate va al muro
+        swal({
+          title: 'Bienvenidx a Triptime',
+          text: 'Puedes acceder a compartir tus experiencias',
+          icon: 'success',
+          button: 'Continuar',
+        });
+  
+        // aqui va el onNavigate va al muro
       })
       .catch((error) => {
-        console.log(error);
-        
+        const errorCode = error.code;
+        console.log(errorCode);
+        if (errorCode === 'auth/invalid-email') {
+          swal({
+            title: 'Email inválido.',
+            text: 'Formato válido: ejemplo@hotmail.com',
+            icon: 'error',
+            button: 'Aceptar',
+          });
+        } else if (errorCode === 'auth/wrong-password') {
+          swal({
+            title: 'Contraseña inválida.',
+            text: 'Ingresa mínimo 6 caracteres',
+            icon: 'error',
+            button: 'Aceptar',
+          });
+        } else if (errorCode === 'auth/missing-email') {
+          swal({
+            title: 'Campo vacío',
+            text: 'Ingresa un correo con formato válido: ejemplo@hotmail.com',
+            icon: 'error',
+            button: 'Aceptar',
+          });
+        } else if (errorCode === 'auth/internal-error') {
+          swal({
+            title: 'Campo vacío',
+            text: 'Ingresa una contraseña de mínimo 6 caracteres',
+            icon: 'error',
+            button: 'Aceptar',
+          });
+        } else if (errorCode === 'auth/user-not-found') {
+          swal({
+            title: 'Usuario no encontrado',
+            text: 'Realiza registro',
+            icon: 'error',
+            button: 'Aceptar',
+          });
+        } 
+
       });
   });
 
@@ -56,14 +99,14 @@ export const Login = () => {
   });
   nodoH1.textContent = 'Triptime';
   nodoH2.textContent = 'Comparte experiencias auténticas de viaje';
-  nodoH6.textContent = '¿Olvidaste tu contraseña?';
+  // nodoH6.textContent = '¿Olvidaste tu contraseña?';
 
   HomeDiv.append(
     nodoH1,
     nodoH2,
     inputMail,
     inputPassword,
-    nodoH6,
+    // nodoH6,
     buttonSesion,
     buttonHome,
   );

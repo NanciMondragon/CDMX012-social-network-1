@@ -4,7 +4,6 @@ import { onNavigate } from '../main.js';
 import { provider } from '../lib/LoginFirebase.js';
 import { loginGoogle } from '../lib/LoginFirebase.js';
 
-
 export const Home = () => {
   const homeDiv = document.createElement('div');
   // Para darle una clase al div
@@ -22,12 +21,10 @@ export const Home = () => {
   buttonLoginGoogle.addEventListener('click', (e) => {
     loginGoogle(provider);
   });
-  
 
   buttonCreateAccount.textContent = 'Crear cuenta';
   buttonLogin.textContent = 'Iniciar sesión';
   buttonLoginGoogle.textContent = 'Iniciar sesión con Google';
-
 
   buttonCreateAccount.addEventListener('click', () => {
     onNavigate('/register');

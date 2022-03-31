@@ -29,6 +29,7 @@ export const Register = () => {
   inputPassword.className = 'inputName';
   inputPassword.setAttribute('id', 'idPassword');
   inputPassword.placeholder = 'Ingresa tu Contraseña';
+  inputPassword.setAttribute('type', 'password');
 
   const buttonRegister = document.createElement('button');
   buttonRegister.className = 'buttonHome';
@@ -37,9 +38,10 @@ export const Register = () => {
   buttonRegister.addEventListener('click', (e) => {
     const idMail = document.getElementById('idMail').value;
     const idPassword = document.getElementById('idPassword').value;
-    createUser(idMail, idPassword);
+    const idName = document.getElementById('idName').value;
+    const idLast = document.getElementById('idLast').value;
 
-   
+    createUser(idMail, idPassword, idName, idLast);
   });
 
   const buttonHome = document.createElement('button');
@@ -53,7 +55,7 @@ export const Register = () => {
 
   buttonHome.textContent = 'Regresa a Home';
   buttonHome.addEventListener('click', () => {
-     onNavigate('/');
+    onNavigate('/');
   });
   nodoH1.textContent = 'Triptime';
   nodoH2.textContent = 'Comparte experiencias auténticas de viaje';
