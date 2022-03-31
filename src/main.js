@@ -1,23 +1,16 @@
-// Este es el punto de entrada de tu 
-/* 
-import { myFunction } from './lib/index.js';
+import { Home } from './components/Home.js';
+import { Register } from './components/Register.js';
+import { Login } from './components/Login.js';
 
-myFunction();
- */
-
-import { Home } from "./components/Home.js";
-import { Register } from "./components/Register.js";
-import { Login } from "./components/Login.js";
-
-const rootDiv = document.getElementById("root");
+const rootDiv = document.getElementById('root');
 
 const routes = {
-  "/": Home,
-  "/register": Register,
-  "/login": Login,
+  '/': Home,
+  '/register': Register,
+  '/login': Login,
 
-  //'/contact' : contact,
-  //'/about' : about
+  // '/contact' : contact,
+  // '/about' : about
 };
 
 export const onNavigate = (pathname) => {
@@ -31,5 +24,5 @@ window.onpopstate = () => {
   rootDiv.appendChild(routes[window.location.pathname]());
 };
 
-let component = routes[window.location.pathname];
+const component = routes[window.location.pathname];
 rootDiv.appendChild(component());

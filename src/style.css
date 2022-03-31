@@ -1,8 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Comfortaa:wght@700&display=swap');
+
 *{
     margin: 0;
     padding:0;
+}
+
+body {
+    background-color: #E2B73E;
+    margin: 0;
+    padding: 0;
 }
 
 h1{   
@@ -12,7 +19,6 @@ h1{
    font-size: 70px;
 }
 h2{
-    
     color:#544E3F;
     font-family: Montserrat;
  }
@@ -21,8 +27,9 @@ h2{
     flex-direction: column;
     background-color: #E2B73E;
     align-items: center;
-    gap:20px;
+    gap:30px;
     padding: 50px;
+    z-index: 1;
 }
 .buttonHome{
     width: 20%;
@@ -32,4 +39,39 @@ h2{
     font-weight: bolder;
     color:#F7F6F4;
     padding: 6px;
+    z-index: 1;
+}
+
+.footer {
+    background-color: #E2B73E;
+    display: flex;
+    justify-content: flex-end;
+    align-content: flex-end;
+    margin: 0;
+    padding: 0;
+    z-index: -1;
+}
+.purple {
+    height: 170px;
+    width: 200px;
+    border-radius: 170px 5px 0 5px;
+    background-color: #8B2C45;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+@media (max-width: 800px) {
+.buttonHome {
+    width: 70%;
+}
+h1 {
+    text-align: center;
+    padding: 10px 10px 5px 10px;
+}
+h2 {
+    text-align: center;
+    padding: 0 10px 10px 10px;
+    font-size: 25px;
+}
 }
