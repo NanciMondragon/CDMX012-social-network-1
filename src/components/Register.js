@@ -42,16 +42,22 @@ export const Register = () => {
     const idLast = document.getElementById('idLast').value;
 
     createUser(idMail, idPassword, idName, idLast);
+    onNavigate('/timeline');
   });
 
-  const buttonHome = document.createElement('button');
-  buttonHome.className = 'buttonHome';
+  const buttonHome = document.createElement('img');
+  buttonHome.classList.add('logoHome');
+  buttonHome.src ='../assets/HomeIcon.png';
 
   inputName.textContent = 'Nombre';
   inputLast.textContent = 'Apellido';
   inputMail.textContent = 'Correo Electronico';
   inputPassword.textContent = 'Contraseña';
   buttonRegister.textContent = 'Registrarse';
+  const footer = document.createElement('footer');
+  footer.className = 'footer';
+  const purple = document.createElement('div');
+  purple.className = 'purple';
 
   buttonHome.textContent = 'Regresa a Home';
   buttonHome.addEventListener('click', () => {
@@ -60,7 +66,7 @@ export const Register = () => {
   nodoH1.textContent = 'Triptime';
   nodoH2.textContent = 'Comparte experiencias auténticas de viaje';
 
-  HomeDiv.append(nodoH1, nodoH2, inputName, inputLast, inputMail, inputPassword, buttonRegister, buttonHome);
+  HomeDiv.append(nodoH1, nodoH2, inputName, inputLast, inputMail, inputPassword, buttonRegister, buttonHome, footer, purple);
   return HomeDiv;
 };
 

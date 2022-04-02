@@ -14,17 +14,25 @@ export const Home = () => {
   buttonCreateAccount.className = 'buttonHome';
   const buttonLogin = document.createElement('button');
   buttonLogin.className = 'buttonHome';
-  
-  const buttonLoginGoogle = document.createElement('button');
-  buttonLoginGoogle.className = 'buttonHome';
+  const imageBack = document.createElement('img');
+  imageBack.setAttribute('src','../assets/montañafondo.png');
+  imageBack.className = 'imageBack'
+ 
+  const buttonLoginGoogle = document.createElement('img');
+  //buttonLoginGoogle.className = 'buttonHome';
+  buttonLoginGoogle.setAttribute =('id','buttonGoogle');
+  buttonLoginGoogle.classList.add('iconG');
+  buttonLoginGoogle.src='../assets/google.jpg'
 
   buttonLoginGoogle.addEventListener('click', (e) => {
     loginGoogle(provider);
+    //e.preventDefault();
+    //onNavigate('/timeline');
   });
 
   buttonCreateAccount.textContent = 'Crear cuenta';
   buttonLogin.textContent = 'Iniciar sesión';
-  buttonLoginGoogle.textContent = 'Iniciar sesión con Google';
+  //buttonLoginGoogle.textContent = 'Iniciar sesión con Google';
 
   buttonCreateAccount.addEventListener('click', () => {
     onNavigate('/register');
@@ -35,6 +43,6 @@ export const Home = () => {
   nodoH1.textContent = 'Triptime';
   nodoH2.textContent = 'Comparte experiencias auténticas de viaje';
 
-  homeDiv.append(nodoH1, nodoH2, buttonCreateAccount, buttonLogin, buttonLoginGoogle);
+  homeDiv.append(nodoH1, nodoH2, buttonCreateAccount, buttonLogin, buttonLoginGoogle, imageBack);
   return homeDiv;
 };
