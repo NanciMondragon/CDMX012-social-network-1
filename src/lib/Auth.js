@@ -6,13 +6,13 @@ export const createUser = (email, password, name, lastName) => {
   createUserWithEmailAndPassword(auth, email, password, name, lastName)
     .then((userCredential) => {
       const user = userCredential;
-      swal({
+      /*swal({
         title: 'Usuario registrado',
         text: 'Puedes acceder a compartir tus experiencias',
         icon: 'success',
         button: 'Continuar',
-      });
-    // aqui va el onNavigate va al muro
+      });*/
+      
     })
     .catch((error) => {
       const errorCode = error.code;
