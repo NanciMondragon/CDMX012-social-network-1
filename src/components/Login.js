@@ -33,20 +33,19 @@ export const Login = () => {
     loginUser(idMailLogin, idPasswordLogin)
       .then((userCredential) => {
         const user = userCredential;
-          swal({
+        swal({
           title: 'Bienvenidx a Triptime',
           text: 'Puedes acceder a compartir tus experiencias',
           icon: 'success',
           button: 'Continuar',
         });
-  
+
         // aqui va el onNavigate va al muro
         onNavigate('/timeline');
-
       })
       .catch((error) => {
         const errorCode = error.code;
-        //console.log(errorCode);
+        // console.log(errorCode);
         if (errorCode === 'auth/invalid-email') {
           swal({
             title: 'Email inválido.',
@@ -82,14 +81,13 @@ export const Login = () => {
             icon: 'error',
             button: 'Aceptar',
           });
-        } 
-
+        }
       });
   });
 
   const buttonHome = document.createElement('img');
   buttonHome.classList.add('logoHome');
-  buttonHome.src ='../assets/HomeIcon.png';
+  buttonHome.src = '../assets/HomeIcon.png';
 
   const footer = document.createElement('footer');
   footer.className = 'footer';
@@ -99,7 +97,7 @@ export const Login = () => {
   inputPassword.textContent = 'Contraseña';
   buttonSesion.textContent = 'Iniciar Sesión';
 
-  //buttonHome.textContent = 'Regresa a Home';
+  // buttonHome.textContent = 'Regresa a Home';
   buttonHome.addEventListener('click', () => {
     onNavigate('/');
   });

@@ -1,8 +1,7 @@
 // SPA Principal
 
 import { onNavigate } from '../main.js';
-import { provider } from '../lib/LoginFirebase.js';
-import { loginGoogle } from '../lib/LoginFirebase.js';
+import { provider, loginGoogle } from '../lib/LoginFirebase.js';
 
 export const Home = () => {
   const homeDiv = document.createElement('div');
@@ -15,24 +14,20 @@ export const Home = () => {
   const buttonLogin = document.createElement('button');
   buttonLogin.className = 'buttonHome';
   const imageBack = document.createElement('img');
-  imageBack.setAttribute('src','../assets/montañafondo.png');
-  imageBack.className = 'imageBack'
- 
-  const buttonLoginGoogle = document.createElement('img');
-  //buttonLoginGoogle.className = 'buttonHome';
-  buttonLoginGoogle.setAttribute =('id','buttonGoogle');
-  buttonLoginGoogle.classList.add('iconG');
-  buttonLoginGoogle.src='../assets/google.jpg'
+  imageBack.setAttribute('src', '../assets/montañafondo.png');
+  imageBack.className = 'imageBack';
 
-  buttonLoginGoogle.addEventListener('click', (e) => {
+  const buttonLoginGoogle = document.createElement('img');
+  buttonLoginGoogle.setAttribute = ('id', 'buttonGoogle');
+  buttonLoginGoogle.classList.add('iconG');
+  buttonLoginGoogle.src = '../assets/google.jpg';
+
+  buttonLoginGoogle.addEventListener('click', () => {
     loginGoogle(provider);
-    //e.preventDefault();
-    //onNavigate('/timeline');
   });
 
   buttonCreateAccount.textContent = 'Crear cuenta';
   buttonLogin.textContent = 'Iniciar sesión';
-  //buttonLoginGoogle.textContent = 'Iniciar sesión con Google';
 
   buttonCreateAccount.addEventListener('click', () => {
     onNavigate('/register');
