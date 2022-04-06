@@ -47,7 +47,7 @@ export const Register = () => {
 
   const buttonHome = document.createElement('img');
   buttonHome.classList.add('logoHome');
-  buttonHome.src ='../assets/HomeIcon.png';
+  buttonHome.src = '../assets/HomeIcon.png';
 
   inputName.textContent = 'Nombre';
   inputLast.textContent = 'Apellido';
@@ -66,8 +66,17 @@ export const Register = () => {
   nodoH1.textContent = 'Triptime';
   nodoH2.textContent = 'Comparte experiencias auténticas de viaje';
 
-  HomeDiv.append(nodoH1, nodoH2, inputName, inputLast, inputMail, inputPassword, buttonRegister, buttonHome, footer, purple);
+  HomeDiv.append(
+    nodoH1,
+    nodoH2,
+    inputName,
+    inputLast,
+    inputMail,
+    inputPassword,
+    buttonRegister,
+    buttonHome,
+    footer,
+    purple,
+  );
   return HomeDiv;
 };
-
-

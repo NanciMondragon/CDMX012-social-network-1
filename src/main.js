@@ -1,7 +1,9 @@
 import { Home } from './components/Home.js';
 import { Register } from './components/Register.js';
 import { Login } from './components/Login.js';
-import { timeline } from './components/timeline.js';
+import { Timeline } from './components/Timeline.js';
+
+import { onAuthStateChanged, auth } from './lib/firebase.js';
 
 const rootDiv = document.getElementById('root');
 
@@ -9,10 +11,7 @@ const routes = {
   '/': Home,
   '/register': Register,
   '/login': Login,
-  '/timeline': timeline,
-
-  // '/contact' : contact,
-  // '/about' : about
+  '/timeline': Timeline,
 };
 
 export const onNavigate = (pathname) => {
@@ -28,3 +27,11 @@ window.onpopstate = () => {
 
 const component = routes[window.location.pathname];
 rootDiv.appendChild(component());
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    onNavigate('/timeline');
+  } else {
+    onNavigate('/');
+  }
+});

@@ -1,17 +1,39 @@
 // aqui exportaras las funciones que necesites
+
 // eslint-disable-next-line import/no-cycle
 
 /* Bosquejo de Firebase */
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
 import {
-  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider,
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  onAuthStateChanged,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
-import { doc, setDoc } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
+
+import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
+import {
+  collection,
+  addDoc,
+  getDocs,
+} from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 
 export {
-  initializeApp, getAuth, createUserWithEmailAndPassword, doc, setDoc, signInWithEmailAndPassword, GoogleAuthProvider,
-  signInWithPopup,  
+  initializeApp,
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  onAuthStateChanged,
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
 };
+
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 export const firebaseConfig = {
@@ -29,5 +51,5 @@ export const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
-
-
+// Initialize Firestore
+export const db = getFirestore(app);
