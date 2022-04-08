@@ -33,13 +33,6 @@ export const Login = () => {
     loginUser(idMailLogin, idPasswordLogin)
       .then((userCredential) => {
         const user = userCredential;
-        swal({
-          title: 'Bienvenidx a Triptime',
-          text: 'Puedes acceder a compartir tus experiencias',
-          icon: 'success',
-          button: 'Continuar',
-        });
-
         // aqui va el onNavigate va al muro
         onNavigate('/timeline');
       })
@@ -110,7 +103,6 @@ export const Login = () => {
     nodoH2,
     inputMail,
     inputPassword,
-    // nodoH6,
     buttonSesion,
     buttonHome,
     footer,

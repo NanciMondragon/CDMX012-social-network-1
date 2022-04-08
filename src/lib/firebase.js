@@ -11,13 +11,18 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   onAuthStateChanged,
+  signOut,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 
-import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
-import {
+import { 
+  getFirestore,
   collection,
   addDoc,
   getDocs,
+  query,
+  onSnapshot,
+  orderBy,
+  serverTimestamp,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 
 export {
@@ -32,6 +37,11 @@ export {
   collection,
   addDoc,
   getDocs,
+  query,
+  onSnapshot,
+  orderBy,
+  serverTimestamp,
+  signOut,
 };
 
 // https://firebase.google.com/docs/web/setup#available-libraries
