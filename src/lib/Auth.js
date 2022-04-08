@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword } from './firebase.js';
+import { getAuth, createUserWithEmailAndPassword, signOut } from './firebase.js';
 
 const auth = getAuth();
 
@@ -75,3 +75,12 @@ export const createUser = (email, password, name, lastName) => {
       }
     });
 };
+
+export const logOut = ()=>{
+  signOut(auth).then(() => {
+  // Sign-out successful.
+}).catch((error) => {
+  // An error happened.
+});
+};
+
