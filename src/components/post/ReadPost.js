@@ -1,5 +1,6 @@
-import {getPostQuery} from '../../lib/Posts.js'
+import { getPostQuery } from '../../lib/Posts.js';
 import { onSnapshot } from '../../lib/firebase.js';
+import { deletePost } from './DeletePost.js';
 
 export const ReadPost = () => {
   const readPostDiv = document.createElement('div');
@@ -7,26 +8,35 @@ export const ReadPost = () => {
   readPostDiv.className = 'readPostClass';
   readPostDiv.setAttribute('id', 'readPost');
 
-  const emptyContainer =document.createElement('section')
+  const emptyContainer = document.createElement('section');
 
   onSnapshot(getPostQuery, (querySnapshot) => {
-    emptyContainer.innerHTML='';    
+    emptyContainer.innerHTML = '';
     querySnapshot.forEach((doc) => {
-      let dataPost =(doc.data().description);
-        let postContainer = `<section class = "container">
+      const dataPost = (doc.data().description);
+      const getId = doc.id;
+      const postContainer = `<section class = "container">
         <textarea class='textBoxRead'> ${dataPost}</textarea>
         <section class='iconBox'>
-        <img class="iconRead" src='../assets/like.png'>
-        <img class="iconRead" src='../assets/edit.png'>
-        <img class="iconRead" src='../assets/delete.png'>
+        <img class="iconLike" src='../assets/like.png'>
+        <img class="iconEdit" src='../assets/edit.png'>
+        <img class="iconDelete" src='../assets/delete.png' data-id="${getId}">
         </section>
         </section>`;
-        emptyContainer.innerHTML +=postContainer;
-    })})
- 
+      emptyContainer.innerHTML += postContainer;
+
+      const buttonDelete = emptyContainer.querySelectorAll('.iconDelete');
+      buttonDelete.forEach((deletePostDoc) => {
+        deletePostDoc.addEventListener('click', (e) => {
+          deletePost(e.target.dataset.id);
+        });
+      });
+    });
+  });
+
   readPostDiv.append(
-  emptyContainer,
+    emptyContainer,
   );
-  
+
   return readPostDiv;
 };

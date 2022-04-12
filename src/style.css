@@ -175,7 +175,7 @@ h2 {
     gap: 25px;
     padding: 10px;
 }
-.iconRead {
+.iconLike, .iconEdit, .iconDelete  {
     width: 20px;
     height: 20px;
 }

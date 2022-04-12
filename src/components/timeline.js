@@ -13,13 +13,13 @@ export const Timeline = () => {
   postTextDiv.setAttribute('id', 'postTextDiv');
 
   const buttonLogOut = document.createElement('img');
-    buttonLogOut.setAttribute =('id','buttonLogOut');
-    buttonLogOut.classList.add('iconLogOut');
-    buttonLogOut.src='../assets/logOut.png'
-    buttonLogOut.addEventListener('click', () => {
-      logOut();
-   });
-   
+  buttonLogOut.setAttribute = ('id', 'buttonLogOut');
+  buttonLogOut.classList.add('iconLogOut');
+  buttonLogOut.src = '../assets/logOut.png';
+  buttonLogOut.addEventListener('click', () => {
+    logOut();
+  });
+
   const nodoH1 = document.createElement('h1');
   nodoH1.textContent = 'Triptime';
   timelineDiv.append(
@@ -29,7 +29,6 @@ export const Timeline = () => {
 
   timelineDiv.append(CreatePost());
   timelineDiv.append(ReadPost());
-   
-   
+
   return timelineDiv;
 };
