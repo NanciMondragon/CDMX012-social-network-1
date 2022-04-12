@@ -12,8 +12,8 @@ export const CreatePost = () => {
   textBox.className = 'textBox';
   textBox.setAttribute('id', 'textBox');
   textBox.placeholder = 'Escribe aqui tu experiencia';
-  textBox.maxLength ='400';
-  textBox.setAttribute = ('required', "");
+  textBox.maxLength = '400';
+  textBox.setAttribute = ('required', '');
   textBox.rows = '8';
   textBox.cols = '42';
 
@@ -21,13 +21,11 @@ export const CreatePost = () => {
   buttonShare.className = 'buttonTime';
   buttonShare.textContent = 'Compartir';
 
-  
   buttonShare.addEventListener('click', () => {
     const textPost = document.getElementById('textBox').value;
     posting(textPost);
 
     console.log(textPost);
-
   });
 
   createPostDiv.append(

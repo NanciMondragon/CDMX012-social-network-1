@@ -1,5 +1,3 @@
-// aqui exportaras las funciones que necesites
-
 // eslint-disable-next-line import/no-cycle
 
 /* Bosquejo de Firebase */
@@ -14,7 +12,7 @@ import {
   signOut,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 
-import { 
+import {
   getFirestore,
   collection,
   addDoc,
@@ -23,6 +21,8 @@ import {
   onSnapshot,
   orderBy,
   serverTimestamp,
+  doc,
+  deleteDoc,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 
 export {
@@ -42,6 +42,8 @@ export {
   orderBy,
   serverTimestamp,
   signOut,
+  doc,
+  deleteDoc,
 };
 
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -63,3 +65,9 @@ export const auth = getAuth(app);
 
 // Initialize Firestore
 export const db = getFirestore(app);
+
+/* export const getId = doc.id;
+      console.log(getId);
+ *//* export const getPost = (id) => getDocs(doc(db, 'posts', id));
+console.log(getPost);
+ */
