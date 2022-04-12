@@ -28,7 +28,7 @@ window.onpopstate = () => {
 const component = routes[window.location.pathname];
 rootDiv.appendChild(component());
 
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, (user, uid) => {
   if (user) {
     onNavigate('/timeline');
   } else {

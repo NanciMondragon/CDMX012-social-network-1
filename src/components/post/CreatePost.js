@@ -1,5 +1,3 @@
-// hacer un cosnole.log de lo que el user escribe
-
 import { posting } from '../../lib/Posts.js';
 
 export const CreatePost = () => {
@@ -23,9 +21,11 @@ export const CreatePost = () => {
 
   buttonShare.addEventListener('click', () => {
     const textPost = document.getElementById('textBox').value;
+    // const inputMail = document.getElementById('inputMail').value;
+
     posting(textPost);
 
-    console.log(textPost);
+    // console.log(textPost);
   });
 
   createPostDiv.append(

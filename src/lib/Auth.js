@@ -1,21 +1,15 @@
 import { getAuth, createUserWithEmailAndPassword, signOut } from './firebase.js';
 
-const auth = getAuth();
+export const auth = getAuth();
 
 export const createUser = (email, password, name, lastName) => {
   createUserWithEmailAndPassword(auth, email, password, name, lastName)
     .then((userCredential) => {
       const user = userCredential;
-      /* swal({
-        title: 'Usuario registrado',
-        text: 'Puedes acceder a compartir tus experiencias',
-        icon: 'success',
-        button: 'Continuar',
-      }); */
     })
+
     .catch((error) => {
       const errorCode = error.code;
-      console.log(errorCode);
       if (name === '') {
         swal({
           title: 'Campo vacío',
@@ -76,11 +70,10 @@ export const createUser = (email, password, name, lastName) => {
     });
 };
 
-export const logOut = ()=>{
+export const logOut = () => {
   signOut(auth).then(() => {
   // Sign-out successful.
-}).catch((error) => {
+  }).catch((error) => {
   // An error happened.
-});
+  });
 };
-

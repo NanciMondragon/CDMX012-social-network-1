@@ -1,14 +1,16 @@
 import {
-  collection, addDoc, db, query, orderBy, serverTimestamp,
+  collection, addDoc, db, query, orderBy, serverTimestamp, auth,
 } from './firebase.js';
 
 // Add a new document with a generated id.
 export const posting = async (textBox) => {
-  const docRef = await addDoc(collection(db, 'posts'), {
+  await addDoc(collection(db, 'posts'), {
     description: textBox,
+    user: auth.currentUser.email,
+    likes: [],
     createdAt: serverTimestamp(),
+    uid: auth.currentUser.uid,
   });
-    // console.log('Document written with ID: ', docRef.id);
 };
 
 export const getPostQuery = query(collection(db, 'posts'), orderBy('createdAt', 'desc'));
