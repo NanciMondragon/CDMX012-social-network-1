@@ -15,7 +15,9 @@ export const ReadPost = () => {
     querySnapshot.forEach((doc) => {
       const dataPost = (doc.data().description);
       const getId = doc.id;
+      const getEmail = doc.data().user;
       const postContainer = `<section class = "container">
+        <h5 class="textMail"> ${getEmail} </h5>
         <textarea class='textBoxRead'> ${dataPost}</textarea>
         <section class='iconBox'>
         <img class="iconLike" src='../assets/like.png'>
@@ -24,6 +26,12 @@ export const ReadPost = () => {
         </section>
         </section>`;
       emptyContainer.innerHTML += postContainer;
+
+      const likes = emptyContainer.querySelector('.iconLike');
+      likes.addEventListener('click', (e) => {
+        console.log('Sirve?');
+        // aquí irá la función de dar like
+      });
 
       const buttonDelete = emptyContainer.querySelectorAll('.iconDelete');
       buttonDelete.forEach((deletePostDoc) => {

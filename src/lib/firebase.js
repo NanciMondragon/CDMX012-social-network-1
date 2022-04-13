@@ -62,12 +62,7 @@ export const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const user = auth.currentUser;
 
 // Initialize Firestore
 export const db = getFirestore(app);
-
-/* export const getId = doc.id;
-      console.log(getId);
- *//* export const getPost = (id) => getDocs(doc(db, 'posts', id));
-console.log(getPost);
- */
