@@ -1,6 +1,7 @@
 import { getPostQuery } from '../../lib/Posts.js';
 import { onSnapshot } from '../../lib/firebase.js';
 import { deletePost } from './DeletePost.js';
+import { onNavigate } from '../../main.js';
 
 export const ReadPost = () => {
   const readPostDiv = document.createElement('div');
@@ -36,7 +37,27 @@ export const ReadPost = () => {
       const buttonDelete = emptyContainer.querySelectorAll('.iconDelete');
       buttonDelete.forEach((deletePostDoc) => {
         deletePostDoc.addEventListener('click', (e) => {
-          deletePost(e.target.dataset.id);
+          e.preventDefault();
+          Swal.fire({
+            text: 'Esta acción no se puede deshacer',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#8B2C45',
+            cancelButtonColor: '#8B2C45',
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: '¡Si,eliminar!',
+            width: '270px',
+          })
+            .then((result) => {
+              if (result.isConfirmed) {
+                deletePost(e.target.dataset.id);
+                Swal.fire(
+                  //'¡Borrado!',
+                  'Tu experiencia de viaje ha sido eliminada con éxito.',
+                );
+                onNavigate('/timeline');
+              }
+            });
         });
       });
     });

@@ -193,7 +193,12 @@ h2 {
     top: 30px;
     right: 60px;
     }
-
+.textMail {
+        color: #8B2C45;
+        font-family: Montserrat;
+        font-weight: bolder;
+        padding: 5px;
+        }
 
 }
 
