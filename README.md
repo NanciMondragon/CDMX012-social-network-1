@@ -2,10 +2,10 @@
 
 ## Índice
 
-* [1. Preámbulo](#1-TRIPTIME ... Comparte experiencias auténticas de viaje)
+* [1. TRIPTIME ... Comparte experiencias auténticas de viaje](#1-TRIPTIME-...-Comparte-experiencias-auténticas-de-viaje)
 * [2. Resumen del proyecto](#2-resumen-del-proyecto)
 * [3. Objetivos de aprendizaje](#3-objetivos-de-aprendizaje)
-* [4. Consideraciones generales para Red Social TRIPTIME](#4-consideraciones-generales para Red Social TRIPTIME)
+* [4. Consideraciones generales para Red Social TRIPTIME](#4-consideraciones-generales-para-red-social-triptime)
 * [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)
 * [6. Entrega](#6-entrega)
 
@@ -79,7 +79,7 @@ Los Objetivos de aprendizaje alcanzados:
 - [✓] **Git: Integración de cambios entre ramas (branch, checkout, fetch, merge)**
 - [✓] **GitHub: Creación de cuenta y repos, configuración de llaves SSH**
 - [✓] **GitHub: Despliegue con GitHub Pages**
-- [✓] **GitHub: Colaboración en Github (branches | forks | pull requests)**
+- [✓] **GitHub: Colaboración en Github (branches | forks | pull requests | tags)**
 
 ### user-centricity
 
@@ -222,6 +222,6 @@ tus H.U.:
 #### Herramientas Github Colaborativo
 Se realizó GitHub Colaborativo donde  3 autores (Abril Quintero, Daniela Carbajal & Nanci Mondragón).
 Enviaron 3 confirmaciones a la principal y 3 confirmaciones a todas las ramas. En main, 15 archivos 
-han cambiado y ha habido 171 adiciones y 66 eliminaciones .    
+han cambiado y ha habido 178 adiciones y 66 eliminaciones .    
 ![GitHub Colaborativo](/src/assets/GitHubColaborativo.png)
 
