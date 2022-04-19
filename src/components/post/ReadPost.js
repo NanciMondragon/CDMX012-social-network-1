@@ -2,6 +2,10 @@ import { getPostQuery } from '../../lib/Posts.js';
 import { onSnapshot, getAuth } from '../../lib/firebase.js';
 import { deletePost } from './DeletePost.js';
 import { onNavigate } from '../../main.js';
+import { editPosts, updatePost } from './EditPost.js';
+
+let editStatus = false;
+let id ='';
 
 export const ReadPost = () => {
   const readPostDiv = document.createElement('div');
@@ -29,7 +33,7 @@ export const ReadPost = () => {
           <textarea class='textBoxRead'> ${dataPost}</textarea>
           <section class='iconBox'>
           <img class="iconLike" src='../assets/like.png'>
-          <img class="iconEdit" src='../assets/edit.png'>
+          <img class="iconEdit" src='../assets/edit.png'data-id="${getId}">
           <img class="iconDelete" src='../assets/delete.png' data-id="${getId}">
           </section>
           </section>`;
@@ -44,6 +48,35 @@ export const ReadPost = () => {
       }
       emptyContainer.innerHTML += postContainer;
 
+      });
+      
+      const textBoxRR = document.getElementById('textBox');
+      const UpdateButton = document.getElementById('btnUpdate');
+      const sharingButton = document.getElementById('btnshare');
+
+      const buttonEdit = emptyContainer.querySelectorAll('.iconEdit');
+      buttonEdit.forEach((btn)=> {
+        btn.addEventListener('click',async(e)=>{
+          //console.log(e.target.dataset.id);
+          editStatus = true;
+          id = e.target.dataset.id;
+          console.log(id);
+
+          const doc = await editPosts(e.target.dataset.id);
+          console.log(doc);
+          const onePost = doc.data();
+          textBoxRR.value = onePost.description;
+          
+        })
+      });
+      UpdateButton.addEventListener('click', () => {
+        if (editStatus===true){
+          updatePost( id,{
+          description : textBoxRR.value,
+        });
+      } else{
+        console.log('En este momento no se está editando')
+      }
       });
 
       const buttonDelete = emptyContainer.querySelectorAll('.iconDelete');
@@ -73,7 +106,7 @@ export const ReadPost = () => {
         });
       });
     });
-  });
+  
 
   readPostDiv.append(
     emptyContainer,
@@ -82,5 +115,3 @@ export const ReadPost = () => {
   return readPostDiv;
 };
 
-hacer commit; 
-ingrese linea 

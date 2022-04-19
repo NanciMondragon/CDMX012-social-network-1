@@ -19,6 +19,11 @@ export const CreatePost = () => {
   buttonShare.className = 'buttonTime';
   buttonShare.textContent = 'Compartir';
 
+  const buttonUpdating = document.createElement('button');
+  buttonUpdating.setAttribute('id','btnUpdate');
+  buttonUpdating.className = 'buttonUpdt';
+  buttonUpdating.textContent = 'Actualizar';
+
   buttonShare.addEventListener('click', () => {
     const textPost = document.getElementById('textBox').value;
     // const inputMail = document.getElementById('inputMail').value;
@@ -31,6 +36,7 @@ export const CreatePost = () => {
   createPostDiv.append(
     textBox,
     buttonShare,
+    buttonUpdating,
   );
   return createPostDiv;
 };

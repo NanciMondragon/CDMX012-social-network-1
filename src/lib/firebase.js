@@ -23,6 +23,8 @@ import {
   serverTimestamp,
   doc,
   deleteDoc,
+  getDoc,
+  updateDoc,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 
 export {
@@ -44,6 +46,8 @@ export {
   signOut,
   doc,
   deleteDoc,
+  getDoc,
+  updateDoc,
 };
 
 // https://firebase.google.com/docs/web/setup#available-libraries
