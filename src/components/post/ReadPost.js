@@ -22,6 +22,7 @@ export const ReadPost = () => {
       // console.log(getId);
       const isMyPost = currentUserEmail === getEmail;
       let postContainer;
+    
       //console.log(currentUserEmail, getEmail)
       if (isMyPost) {
         postContainer = `<section class = "container">
@@ -44,6 +45,10 @@ export const ReadPost = () => {
       }
       emptyContainer.innerHTML += postContainer;
 
+      const likes = emptyContainer.querySelector('.iconLike');
+      likes.addEventListener('click', (e) => {
+        console.log('Sirve?');
+        // aquí irá la función de dar like
       });
 
       const buttonDelete = emptyContainer.querySelectorAll('.iconDelete');
