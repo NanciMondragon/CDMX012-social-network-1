@@ -1,5 +1,5 @@
 import { getPostQuery } from '../../lib/Posts.js';
-import { onSnapshot } from '../../lib/firebase.js';
+import { onSnapshot, getAuth } from '../../lib/firebase.js';
 import { deletePost } from './DeletePost.js';
 import { onNavigate } from '../../main.js';
 
@@ -12,26 +12,38 @@ export const ReadPost = () => {
   const emptyContainer = document.createElement('section');
 
   onSnapshot(getPostQuery, (querySnapshot) => {
+    const auth = getAuth();
     emptyContainer.innerHTML = '';
     querySnapshot.forEach((doc) => {
       const dataPost = (doc.data().description);
       const getId = doc.id;
+      const currentUserEmail = auth.currentUser.email;
       const getEmail = doc.data().user;
-      const postContainer = `<section class = "container">
+      // console.log(getId);
+      const isMyPost = currentUserEmail === getEmail;
+      let postContainer;
+      //console.log(currentUserEmail, getEmail)
+      if (isMyPost) {
+        postContainer = `<section class = "container">
+          <h5 class="textMail"> ${getEmail} </h5>
+          <textarea class='textBoxRead'> ${dataPost}</textarea>
+          <section class='iconBox'>
+          <img class="iconLike" src='../assets/like.png'>
+          <img class="iconEdit" src='../assets/edit.png'>
+          <img class="iconDelete" src='../assets/delete.png' data-id="${getId}">
+          </section>
+          </section>`;
+      } else {
+        postContainer = `<section class = "container">
         <h5 class="textMail"> ${getEmail} </h5>
         <textarea class='textBoxRead'> ${dataPost}</textarea>
         <section class='iconBox'>
         <img class="iconLike" src='../assets/like.png'>
-        <img class="iconEdit" src='../assets/edit.png'>
-        <img class="iconDelete" src='../assets/delete.png' data-id="${getId}">
         </section>
         </section>`;
+      }
       emptyContainer.innerHTML += postContainer;
 
-      const likes = emptyContainer.querySelector('.iconLike');
-      likes.addEventListener('click', (e) => {
-        console.log('Sirve?');
-        // aquí irá la función de dar like
       });
 
       const buttonDelete = emptyContainer.querySelectorAll('.iconDelete');
@@ -52,7 +64,7 @@ export const ReadPost = () => {
               if (result.isConfirmed) {
                 deletePost(e.target.dataset.id);
                 Swal.fire(
-                  //'¡Borrado!',
+                  // '¡Borrado!',
                   'Tu experiencia de viaje ha sido eliminada con éxito.',
                 );
                 onNavigate('/timeline');
