@@ -181,7 +181,7 @@ h2 {
     gap: 25px;
     padding: 10px;
 }
-.iconLike, .iconEdit, .iconDelete  {
+.iconLike, .iconEdit, .iconDelete, .iconLike1 {
     width: 20px;
     height: 20px;
 }
@@ -212,9 +212,9 @@ h2 {
     font-size: 20px;
     align-self: center;
 }
-/*.buttonUpdt{
+.buttonUpdt{
     display: none;
-}*/
+}
 
 
 }

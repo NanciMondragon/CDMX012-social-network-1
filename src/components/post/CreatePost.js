@@ -16,6 +16,7 @@ export const CreatePost = () => {
   textBox.cols = '42';
 
   const buttonShare = document.createElement('button');
+  buttonShare.setAttribute('id', 'btnshare');
   buttonShare.className = 'buttonTime';
   buttonShare.textContent = 'Compartir';
 
