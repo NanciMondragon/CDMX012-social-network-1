@@ -1,11 +1,10 @@
 import { getPostQuery } from '../../lib/Posts.js';
 import {
-  onSnapshot, getAuth, doc,
+  arrayUnion, arrayRemove, onSnapshot, getAuth, doc, getDoc, db,
 } from '../../lib/firebase.js';
 import { deletePost } from './DeletePost.js';
 import { onNavigate } from '../../main.js';
 import { editPosts, updatePost } from './EditPost.js';
-import { likePost } from './LikePost.js';
 
 let editStatus = false;
 let id = '';
@@ -37,7 +36,7 @@ export const ReadPost = () => {
           <textarea class='textBoxRead'> ${dataPost}</textarea>
           <section class='iconBox'>
           <p class="counterLikes">${currentLikes}</p>
-          <img class="iconLike" id=${getId} src='../assets/like.png'>
+          <img class="iconLike" id="iconLike" src='../assets/like.png' data-id="${getId}">
           <img class="iconEdit" src='../assets/edit.png'data-id="${getId}">
           <img class="iconDelete" src='../assets/delete.png' data-id="${getId}">
           </section>
@@ -48,7 +47,7 @@ export const ReadPost = () => {
         <textarea class='textBoxRead'> ${dataPost}</textarea>
         <section class='iconBox'>
         <p class="counterLikes">${currentLikes}</p>
-        <img class="iconLike" id=${getId}" src='../assets/like.png'>
+        <img class="iconLike" src='../assets/like.png' data-id="${getId}">
         </section>
         </section>`;
       }
@@ -65,10 +64,8 @@ export const ReadPost = () => {
       btn.addEventListener('click', async (e) => {
         editStatus = true;
         id = e.target.dataset.id;
-        console.log(e.target.datase);
 
         const doc = await editPosts(e.target.dataset.id);
-        console.log(doc);
         const onePost = doc.data();
         textBoxRR.value = onePost.description;
         sharingButton.style.display = 'none';
@@ -114,9 +111,29 @@ export const ReadPost = () => {
     });
 
     const buttonsLike = emptyContainer.querySelectorAll('.iconLike');
+
     buttonsLike.forEach((btn) => {
       btn.addEventListener('click', async (e) => {
-        await likePost(e.target.dataset.id);
+        id = e.target.dataset.id;
+        const post = await getDoc(doc(db, 'posts', id));
+        const likeArray = post.data().likes;
+        const currentUserEmail = auth.currentUser.email;
+        const heartFull = document.createElement('img');
+        heartFull.setAttribute('id', 'iconLike1');
+        heartFull.src = 'src/assets/like1.png';
+        heartFull.className = 'iconLike1';
+        if (likeArray.includes(currentUserEmail)) {
+          // document.getElementyId('iconLike').src = 'src/assets/like1.png';
+          // buttonsLike.replaceWith(heartFull);
+          updatePost(id, {
+            likes: arrayRemove(currentUserEmail),
+          });
+        } else {
+          updatePost(id, {
+            likes: arrayUnion(currentUserEmail),
+          });
+          // buttonsLike.replaceWith('iconLike1');
+        }
       });
     });
   });
